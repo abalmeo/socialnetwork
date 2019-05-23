@@ -1,4 +1,4 @@
-const mongoose = require("mongoose ");
+const mongoose = require("mongoose");
 const ProfileSchema = new mongoose.Schema({
   user: {
     type: mongoose.Schema.Types.ObjectId,
@@ -84,7 +84,7 @@ const ProfileSchema = new mongoose.Schema({
       type: String
     },
     twitter: {
-      type: string
+      type: String
     },
     facebook: {
       type: String
@@ -93,7 +93,7 @@ const ProfileSchema = new mongoose.Schema({
       type: String
     },
     instagram: {
-      type: string
+      type: String
     }
   },
   date: {
