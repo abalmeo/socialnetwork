@@ -234,7 +234,7 @@ router.post(
 
       const newComment = {
         text: req.body.text,
-        name: user.name,
+        name: req.user.name,
         avatar: user.avatar,
         user: req.user.id
       };
@@ -261,7 +261,7 @@ router.delete("/comment/:id/:comment_id", auth, async (req, res) => {
 
     // Pull out comment
     const comment = post.comments.find(
-      comments => comments.id === req.params.comment_id
+      comment => comment.id === req.params.comment_id
     );
     //Make sure comment exists
     if (!comment) {
