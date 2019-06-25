@@ -41,7 +41,7 @@ router.post(
       check("status", "Status is required")
         .not()
         .isEmpty(),
-      check("skills", "Skills is reuqired")
+      check("skills", "Skills is required")
         .not()
         .isEmpty()
     ]
@@ -49,7 +49,7 @@ router.post(
   async (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-      return res.status(400).json({ errrs: errors.array() });
+      return res.status(400).json({ errors: errors.array() });
     }
 
     const {
@@ -77,7 +77,7 @@ router.post(
     if (status) profileFields.status = status;
     if (githubusername) profileFields.githubusername = githubusername;
     if (skills) {
-      profileFields.skills = skills.split(",").map(skills => skills.trim());
+      profileFields.skills = skills.split(",").map(skill => skill.trim());
     }
 
     //Build social object
