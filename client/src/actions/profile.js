@@ -41,7 +41,7 @@ export const createProfile = (
       payload: res.data
     });
     //If edit is true then profile updated otherwise profile created
-    dispatch(setAlert(edit ? "Profile Updated" : "Profile Created"));
+    dispatch(setAlert(edit ? "Profile Updated" : "Profile Created", "success"));
 
     //if not editing, creating profile, then rerouting to dashboard
     if (!edit) {
