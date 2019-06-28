@@ -29,7 +29,6 @@ const EditProfile = ({
 
   useEffect(() => {
     getCurrentProfile();
-
     setFormData({
       company: loading || !profile.company ? "" : profile.company,
       website: loading || !profile.website ? "" : profile.website,
@@ -37,33 +36,16 @@ const EditProfile = ({
       status: loading || !profile.status ? "" : profile.status,
       skills: loading || !profile.skills ? "" : profile.skills.join(","),
       githubusername:
-        loading || !profile.githubusername
-          ? ""
-          : profile.githubusername.join(","),
-      loading: loading || !profile.loading ? "" : profile.loading.join(","),
-      bio: loading || !profile.bio ? "" : profile.bio.join(","),
-      twitter:
-        loading || !profile.social.twitter
-          ? ""
-          : profile.social.twitter.join(","),
-      facebook:
-        loading || !profile.social.facebook
-          ? ""
-          : profile.social.facebook.join(","),
-      linkedin:
-        loading || !profile.social.linkedin
-          ? ""
-          : profile.social.linkedin.join(","),
-      youtube:
-        loading || !profile.social.youtube
-          ? ""
-          : profile.social.youtube.join(","),
-      instagram:
-        loading || !profile.social.instagram
-          ? ""
-          : profile.social.instagram.join(",")
+        loading || !profile.githubusername ? "" : profile.githubusername,
+      bio: loading || !profile.bio ? "" : profile.bio,
+      twitter: loading || !profile.social ? "" : profile.social.twitter,
+      facebook: loading || !profile.social ? "" : profile.social.facebook,
+      linkedin: loading || !profile.social ? "" : profile.social.linkedin,
+      youtube: loading || !profile.social ? "" : profile.social.youtube,
+      instagram: loading || !profile.social ? "" : profile.social.instagram
     });
-  }, [getCurrentProfile, loading, profile.company, profile.website, profile.location, profile.status, profile.skills, profile.githubusername, profile.loading, profile.bio, profile.social.twitter, profile.social.facebook, profile.social.linkedin, profile.social.youtube, profile.social.instagram]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [loading, getCurrentProfile]);
 
   const {
     company,
@@ -80,13 +62,12 @@ const EditProfile = ({
     instagram
   } = formData;
 
-  const onChange = e => {
+  const onChange = e =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
 
   const onSubmit = e => {
     e.preventDefault();
-    createProfile(formData, history);
+    createProfile(formData, history, true);
   };
 
   return (
@@ -184,7 +165,6 @@ const EditProfile = ({
           />
           <small className="form-text">Tell us a little about yourself</small>
         </div>
-
         <div className="my-2">
           <button
             onClick={() => toggleSocialInputs(!displaySocialInputs)}
@@ -194,7 +174,6 @@ const EditProfile = ({
           </button>
           <span>Optional</span>
         </div>
-
         {displaySocialInputs && (
           <Fragment>
             <div className="form-group social-input">
@@ -207,7 +186,6 @@ const EditProfile = ({
                 onChange={e => onChange(e)}
               />
             </div>
-
             <div className="form-group social-input">
               <i className="fab fa-facebook fa-2x" />
               <input
@@ -218,7 +196,6 @@ const EditProfile = ({
                 onChange={e => onChange(e)}
               />
             </div>
-
             <div className="form-group social-input">
               <i className="fab fa-youtube fa-2x" />
               <input
@@ -229,7 +206,6 @@ const EditProfile = ({
                 onChange={e => onChange(e)}
               />
             </div>
-
             <div className="form-group social-input">
               <i className="fab fa-linkedin fa-2x" />
               <input
@@ -240,7 +216,6 @@ const EditProfile = ({
                 onChange={e => onChange(e)}
               />
             </div>
-
             <div className="form-group social-input">
               <i className="fab fa-instagram fa-2x" />
               <input
@@ -253,23 +228,20 @@ const EditProfile = ({
             </div>
           </Fragment>
         )}
-
         <input type="submit" className="btn btn-primary my-1" />
-        <Link className="btn btn-light my-1" href="dashboard.html">
+        <Link className="btn btn-light my-1" to="/dashboard">
           Go Back
         </Link>
       </form>
     </Fragment>
   );
 };
-
-CreateProfile.propTypes = {
+EditProfile.propTypes = {
   createProfile: PropTypes.func.isRequired,
   getCurrentProfile: PropTypes.func.isRequired,
   profile: PropTypes.object.isRequired
 };
-
-const mapStateToProps = (state = {
+const mapStateToProps = state => ({
   profile: state.profile
 });
 
