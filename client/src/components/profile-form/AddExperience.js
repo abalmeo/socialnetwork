@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { addExperience } from "../../actions/profile";
 
-const AddExperience = props => {
+const AddExperience = ({ addExperience, history }) => {
   const [formData, setFormData] = useState({
     company: "",
     title: "",
@@ -30,7 +30,12 @@ const AddExperience = props => {
         that you have had in the past
       </p>
       <small>* = required field</small>
-      <form class="form">
+      <form
+        class="form"
+        onSubmit={e => {
+          e.preventDefault();
+          addExperience(formData, history);
+        }}>
         <div class="form-group">
           <input
             type="text"
@@ -75,8 +80,10 @@ const AddExperience = props => {
               type="checkbox"
               name="current"
               value={current}
+              checked={current}
               onChange={e => {
-                setFormData({});
+                setFormData({ ...formData, current: !current });
+                toggleDisabled(!toDateDisabled);
               }}
             />{" "}
             Current Job
@@ -84,7 +91,13 @@ const AddExperience = props => {
         </div>
         <div class="form-group">
           <h4>To Date</h4>
-          <input type="date" name="to" />
+          <input
+            type="date"
+            name="to"
+            value={to}
+            onChange={e => onChange(e)}
+            disabled={toDateDisabled ? "disabled" : ""}
+          />
         </div>
         <div class="form-group">
           <textarea
@@ -92,6 +105,8 @@ const AddExperience = props => {
             cols="30"
             rows="5"
             placeholder="Job Description"
+            value={description}
+            onChange={e => onChange(e)}
           />
         </div>
         <input type="submit" class="btn btn-primary my-1" />
