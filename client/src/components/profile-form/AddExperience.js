@@ -9,7 +9,7 @@ const AddExperience = ({ addExperience, history }) => {
     company: "",
     title: "",
     from: "",
-    //to conditionally rendered, if currently working then don't render to
+    location: "",
     to: "",
     current: false,
     description: ""
