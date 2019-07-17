@@ -16,9 +16,9 @@ const Experience = ({ experience }) => {
           <Moment format="YYYY/MM/DD">{exp.to}</Moment>
         )}
       </td>
-    </td>
-    <td>
-      <button className='btn btn-danger'> Delete </button>
+      <td>
+        <button className="btn btn-danger"> Delete </button>
+      </td>
     </td>
   ));
   return (
@@ -39,6 +39,8 @@ const Experience = ({ experience }) => {
   );
 };
 
-Experience.propTypes = {};
+Experience.propTypes = {
+  experience: PropTypes.array.isRequired
+};
 
 export default Experience;
