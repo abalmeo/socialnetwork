@@ -10,7 +10,7 @@ import { getCurrentProfile, deleteAccount } from "../../actions/profile";
 
 const Dashboard = ({
   getCurrentProfile,
-  deleteAccount
+  deleteAccount,
   auth: { user },
   profile: { profile, loading }
 }) => {
@@ -33,8 +33,8 @@ const Dashboard = ({
           <Education education={profile.education} />
 
           <div className="my-2">
-            <button className="btn-danger" onClick={() => deleteAccount()}>
-              <i className="fas fa-minus" /> Delete My Account
+            <button className="btn btn-danger" onClick={() => deleteAccount()}>
+              <i className="fas fa-user-minus" /> Delete My Account
             </button>
           </div>
         </Fragment>
@@ -52,6 +52,7 @@ const Dashboard = ({
 
 Dashboard.propTypes = {
   getCurrentProfile: PropTypes.func.isRequired,
+  deleteAccount: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired,
   profile: PropTypes.object.isRequired
 };
@@ -63,5 +64,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { getCurrentProfile }
+  { getCurrentProfile, deleteAccount }
 )(Dashboard);
