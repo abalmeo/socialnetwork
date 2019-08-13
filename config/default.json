@@ -1,5 +1,5 @@
 {
-  "mongoURI": "mongodb+srv://alvin:alvin@cluster0-oznf3.mongodb.net/test?retryWrites=true",
+  "mongoURI": "mongodb+srv://alvin:alvin@cluster0-oznf3.mongodb.net/test?retryWrites=true&w=majority",
   "jwtSecret": "mysecrettoken",
   "githubClientId": "731988af2c977dfedb71",
   "githubSecret": "fa7a527866b93dcb9e90ef0768edcf45007c4021"
