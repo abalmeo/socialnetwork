@@ -136,6 +136,7 @@ router.get("/user/:user_id", async (req, res) => {
     const profile = await Profile.findOne({
       user: req.params.user_id
     }).populate("user", ["name", "avatar"]);
+
     if (!profile) return res.status(400).json({ msg: "Profile not found" });
 
     res.json(profile);
@@ -144,7 +145,7 @@ router.get("/user/:user_id", async (req, res) => {
     if (err.kind == "ObjectId") {
       return res.status(400).json({ msg: "Profile not found" });
     }
-    res.status(500).send("Server error");
+    res.status(500).send("Server Error");
   }
 });
 
