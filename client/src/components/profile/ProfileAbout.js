@@ -1,6 +1,5 @@
 import React, { Fragment } from "react";
 import PropTypes from "prop-types";
-import { disconnect } from "cluster";
 
 const ProfileAbout = ({
   profile: {
@@ -20,11 +19,11 @@ const ProfileAbout = ({
 
     <h2 class="text-primary">Skill Set</h2>
     <div class="skills">
-      {skills.map((skill, index) => {
+      {skills.map((skill, index) => (
         <div key={index} className="p-1">
-          <i className="fas fa-check">skill</i>
-        </div>;
-      })}
+          <i className="fas fa-check">{skill}</i>
+        </div>
+      ))}
     </div>
   </div>
 );
