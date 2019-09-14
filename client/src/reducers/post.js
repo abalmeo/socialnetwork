@@ -5,7 +5,6 @@ import {
   DELETE_POST,
   ADD_POST
 } from "../actions/types";
-import { defaultCipherList } from "constants";
 
 const initialState = {
   posts: [],
