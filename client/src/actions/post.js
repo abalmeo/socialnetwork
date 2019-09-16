@@ -125,7 +125,7 @@ export const addComment = (postId, formData) => async dispatch => {
   };
   try {
     const res = await axios.post(
-      `/api/posts/comments/${postId}`,
+      `/api/posts/comment/${postId}`,
       formData,
       config
     );
