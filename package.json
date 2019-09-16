@@ -4,6 +4,7 @@
   "description": "Track your health and visualize datapoints through different graphs",
   "main": "server.js",
   "scripts": {
+    "update:packages": "node wipe-dependencies.js && rm -rf node_modules && npm update --save-dev && npm update --save",
     "start": "node server",
     "server": "nodemon server",
     "client": "npm start --prefix client",
@@ -24,19 +25,19 @@
   "dependencies": {
     "@types/react-redux": "^7.1.2",
     "bcryptjs": "^2.4.3",
-    "config": "^3.1.0",
-    "express": "^4.17.0",
+    "config": "^3.2.2",
+    "express": "^4.17.1",
     "express-validator": "^5.3.1",
     "gravatar": "^1.8.0",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^5.5.10",
-    "react-redux": "^7.1.0",
+    "mongoose": "^5.7.1",
+    "react-redux": "^7.1.1",
     "redux": "^4.0.4",
     "request": "^2.88.0"
   },
   "devDependencies": {
-    "concurrently": "^4.1.0",
-    "eslint-plugin-react-hooks": "^1.6.1",
-    "nodemon": "^1.19.0"
+    "concurrently": "^4.1.2",
+    "eslint-plugin-react-hooks": "^1.7.0",
+    "nodemon": "^1.19.2"
   }
 }
