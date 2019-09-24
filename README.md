@@ -1,5 +1,5 @@
 # Social Network Platform
-*This application is an application that connects developers through different media platforms. Some of the platforms include linkedin, github, twitter, etc. In addition users can comment on each others profiles and posts*
+*This application connects developers through different media platforms. Some of the platforms include linkedin, github, twitter, etc. In addition users can comment on each others profiles and posts*
 
 # Technologies Used
 *MongoDb, Express, React/Redux, Node
